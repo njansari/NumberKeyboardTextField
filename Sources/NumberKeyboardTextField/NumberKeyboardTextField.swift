@@ -3,11 +3,19 @@ import SwiftUI
 public struct NumberKeyboardTextField: UIViewRepresentable {
     @Binding var value: Int
 
+    let placeholder: String?
     let validateText: (() -> Void)?
+
+    public init(value: Binding<Int>, placeholder: String? = nil, validateText: (() -> Void)? = nil) {
+        _value = value
+        self.placeholder = placeholder
+        self.validateText = validateText
+    }
 
     public func makeUIView(context: Context) -> UITextField {
         let textField = UITextField()
         textField.delegate = context.coordinator
+        textField.placeholder = placeholder
         textField.textAlignment = .right
         textField.textColor = .tintColor
         textField.font = .preferredFont(forTextStyle: .body)
