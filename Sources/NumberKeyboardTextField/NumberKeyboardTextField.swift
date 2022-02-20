@@ -1,10 +1,10 @@
 import SwiftUI
 
 public struct NumberKeyboardTextField: UIViewRepresentable {
-    @Binding var value: Int
+    @Binding private var value: Int
 
-    let placeholder: String?
-    let validateText: (() -> Void)?
+    private let placeholder: String?
+    private let validateText: (() -> Void)?
 
     public init(value: Binding<Int>, placeholder: String? = nil, validateText: (() -> Void)? = nil) {
         _value = value
